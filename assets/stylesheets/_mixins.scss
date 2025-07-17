@@ -1,0 +1,14 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin full-width {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@mixin spinner-animation {
+  animation: spin 1s linear infinite;
+}

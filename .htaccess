@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Preserve Authorization header
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+# Only rewrite if URL is exactly /login or /register (with optional trailing slash)
+RewriteCond %{REQUEST_URI} ^/(login|register)/?$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]

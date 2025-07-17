@@ -1,0 +1,170 @@
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi/Satoshi-VariableItalic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+}
+body {
+  background-color: rgb(23, 23, 23);
+  font-family: Satoshi, sans-serif;
+  color: rgb(223, 223, 223);
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container {
+  max-width: 30rem;
+  min-width: 10rem;
+  width: 40vw;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.auth-container #loginCard {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.auth-container #registerCard {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.auth-container form {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.auth-container h2 {
+  text-align: center;
+  font-size: 4rem;
+  margin: 0 0 20px;
+}
+.auth-container input {
+  color: rgb(223, 223, 223);
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  padding: 0.75rem;
+  outline: none;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  background-color: rgb(42, 42, 42);
+  border: 1px solid transparent;
+  font-size: 1.2rem;
+}
+.auth-container input:focus, .auth-container input:active {
+  border: 1px solid rgba(223, 223, 223, 0.3);
+  outline: none;
+}
+.auth-container button {
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(23, 53, 24);
+  color: rgb(223, 223, 223);
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: 0 0 20px 0;
+  overflow-x: hidden;
+}
+.auth-container button .mini-spinner {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 3px solid rgb(42, 42, 42);
+  border-top: 3px solid rgb(68, 158, 72);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 0.5rem;
+}
+.auth-container button .btn-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth-container button:disabled {
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+.auth-container button:disabled span, .auth-container button:disabled svg {
+  transform: none !important;
+  transition: none !important;
+}
+.auth-container button span {
+  display: inline-block;
+  transition: 0.4s ease transform;
+}
+.auth-container button svg {
+  margin: 0 0 -0.4rem 10px;
+  transition: 0.3s ease transform;
+}
+.auth-container button:hover svg {
+  transform: translateX(50px);
+}
+.auth-container button:hover span {
+  transform: translateX(15px);
+}
+.auth-container .auth-link {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+}
+.auth-container .auth-link a {
+  cursor: pointer;
+  color: rgb(68, 158, 72);
+}
+
+.success-message {
+  text-align: center;
+  display: none;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgb(42, 42, 42);
+  border-top: 4px solid rgb(68, 158, 72);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
