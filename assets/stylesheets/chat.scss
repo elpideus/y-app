@@ -6,38 +6,91 @@
 body {
   justify-content: normal;
   align-items: normal;
+  height: 100vh;
+  display: flex;
 }
 
 .sidebar {
+  $max-width: 42rem;
+  $min-width: 15rem;
+  $width: 23vw;
   padding: 0 20px;
   box-sizing: border-box;
-  max-width: 60rem;
-  width: 20vw;
+  min-width: $min-width;
+  width: $width;
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 
   h2 {
     margin-left: 20px;
   }
 
-  #chatsSearch {
-    @include input;
-    font-size: 1rem;
-    padding: 0.4rem;
-    margin: -20px 20px 0 20px;
-    &::placeholder {
-      filter: saturate(0);
+  .search-container {
+    margin-top: -20px;
+    @include full-width;
+    padding: 0 20px;
+    input {
+      @include input;
+      font-size: 1rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 5px 10px;
+
+      &::placeholder {
+        filter: saturate(0);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
   }
 
   .active-chats-list {
+    @include full-width;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #3f3f46;
+      border-radius: 3px;
+      border: 1px solid transparent;
+      background-clip: padding-box;
+      visibility: hidden;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+      transition: background-color 0.3s ease;
+    }
+
     .active-chat {
-      $height: 69px;
+      @include full-width;
+      $height: 4rem;
       display: flex;
       gap: 10px;
       height: $height;
+      min-height: $height;
       overflow: hidden;
       white-space: nowrap;
 
@@ -48,6 +101,9 @@ body {
         flex-grow: 0;
         flex-shrink: 0;
         cursor: pointer;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
       }
 
       .details {
@@ -76,4 +132,84 @@ body {
       }
     }
   }
+}
+
+.resizer {
+  width: 40px;
+  height: 100%;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  cursor: ew-resize;
+  z-index: 10;
+}
+
+.resizer-line {
+  width: 3px;
+  height: 70%;
+  background: linear-gradient(
+                  to bottom,
+                  transparent 0%,
+                  rgba(255, 255, 255, 0.1) 10%,
+                  rgba(255, 255, 255, 0.3) 25%,
+                  rgba(255, 255, 255, 0.6) 50%,
+                  rgba(255, 255, 255, 0.3) 75%,
+                  rgba(255, 255, 255, 0.1) 90%,
+                  transparent 100%
+  );
+  border-radius: 2px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+  opacity: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 30%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 3px;
+    transition: opacity 0.2s ease;
+  }
+}
+
+.resizer:hover .resizer-line {
+  opacity: 1;
+}
+
+.resizer:hover .resizer-line {
+  background: linear-gradient(
+                  to bottom,
+                  transparent 0%,
+                  rgba(255, 255, 255, 0.2) 10%,
+                  rgba(255, 255, 255, 0.5) 25%,
+                  rgba(255, 255, 255, 0.8) 50%,
+                  rgba(255, 255, 255, 0.5) 75%,
+                  rgba(255, 255, 255, 0.2) 90%,
+                  transparent 100%
+  );
+
+  &::before {
+    width: 8px;
+    height: 35%;
+    background: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.chat-area {
+  flex-grow: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: rgb(18, 18, 18);
 }

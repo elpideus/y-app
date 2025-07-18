@@ -4,24 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login / Register</title>
-    <link rel="stylesheet" href="assets/stylesheets/chat.css">
+    <link rel="stylesheet" href="assets/stylesheets/chat.css?v=6">
 </head>
 <body>
-    <aside class="sidebar">
-        <h2>Y-App Chats</h2>
-        <input id="chatsSearch" type="text" aria-label="🔎 Search or start a new yap!" name="chatsSearch" placeholder="🔎 Search or start a new yap!" required>
-        <section class="active-chats-list">
-            <div class=active-chat>
-                <div class="avatar" style="background-image: url('https://i.pravatar.cc/69')"></div>
-                <div class="details">
-                    <h4>John Lemon</h4>
-                    <span>This is a message for testing purposes only.</span>
-                </div>
+<aside class="sidebar">
+    <h2>Y-App Chats</h2>
+    <div class="search-container">
+        <input id="chatsSearch" type="text" aria-label="🔎 Search or start a yap!" name="chatsSearch" placeholder="🔎 Search or start a yap!" required>
+    </div>
+    <section class="active-chats-list">
+        <div class="active-chat">
+            <div class="avatar" style="background-image: url('https://i.pravatar.cc/69?u=1')"></div>
+            <div class="details">
+                <h4>John Lemon</h4>
+                <span>This is a message for testing purposes only.</span>
             </div>
-        </section>
-    </aside>
-    <main class="chat-area">
+        </div>
+    </section>
+    <!-- Resizer handle -->
+    <div class="resizer">
+        <div class="resizer-line"></div>
+    </div>
+</aside>
+<main class="chat-area">
 
-    </main>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const activeChatsList = document.querySelector('.active-chats-list');
+
+        fetch('MOCK_DATA.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(contacts => {
+                activeChatsList.innerHTML = '';
+
+                for (let i = 0; i < 23 && i < contacts.length; i++) {
+                    const contact = contacts[i];
+                    const chatItemHTML = `<div class="active-chat"><div class="avatar" style="background-image: url(${contact.profile_picture})"></div><div class="details"><h4>${contact.username}</h4><span>${contact.bio}</span></div></div>`;
+
+                    activeChatsList.innerHTML += chatItemHTML;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching or processing data:', error);
+                activeChatsList.innerHTML = '<p>Failed to load contacts.</p>';
+            });
+
+        const sidebar = document.querySelector('.sidebar');
+        const resizer = document.querySelector('.resizer');
+        const resizerLine = document.querySelector('.resizer-line');
+
+        let isResizing = false;
+
+        const RESIZE_ERROR_MARGIN = 10;
+        const MAX_SIDEBAR_WIDTH = 700;
+
+        function updateResizerLinePosition(e) {
+            const resizerRect = resizer.getBoundingClientRect();
+            const mouseY = e.clientY;
+            const resizerTop = resizerRect.top;
+            const resizerHeight = resizerRect.height;
+
+            const relativeY = Math.max(0, Math.min(1, (mouseY - resizerTop) / resizerHeight));
+
+            const positionPercent = relativeY * 100;
+
+            resizerLine.style.top = `${positionPercent}%`;
+            resizerLine.style.transform = 'translate(-50%, -50%)';
+        }
+
+        resizer.addEventListener('mouseenter', (e) => {
+            console.log('Mouse entered resizer');
+            resizerLine.style.opacity = '1';
+            updateResizerLinePosition(e);
+        });
+
+        resizer.addEventListener('mousemove', (e) => {
+            if (!isResizing) {
+                updateResizerLinePosition(e);
+            }
+        });
+
+        resizer.addEventListener('mouseleave', () => {
+            console.log('Mouse left resizer');
+            if (!isResizing) {
+                resizerLine.style.opacity = '0';
+                resizerLine.style.top = '50%';
+                resizerLine.style.transform = 'translate(-50%, -50%)';
+            }
+        });
+
+        resizer.addEventListener('mousedown', (e) => {
+            console.log('Mouse down on resizer');
+            isResizing = true;
+            updateResizerLinePosition(e);
+            document.body.style.userSelect = 'none';
+            document.body.style.cursor = 'ew-resize';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+
+            updateResizerLinePosition(e);
+
+            let newWidth = e.clientX + RESIZE_ERROR_MARGIN;
+
+            if (newWidth > MAX_SIDEBAR_WIDTH) {
+                newWidth = MAX_SIDEBAR_WIDTH;
+            }
+
+            const minWidth = parseFloat(getComputedStyle(sidebar).minWidth);
+            if (newWidth < minWidth) {
+                newWidth = minWidth;
+            }
+
+            sidebar.style.width = `${newWidth}px`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isResizing) {
+                console.log('Mouse up - stopping resize');
+                isResizing = false;
+                document.body.style.userSelect = '';
+                document.body.style.cursor = '';
+
+                resizerLine.style.top = '50%';
+                resizerLine.style.transform = 'translate(-50%, -50%)';
+                resizerLine.style.opacity = '0';
+            }
+        });
+    });
+</script>
 </body>
 </html>
