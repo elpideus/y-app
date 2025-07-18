@@ -204,12 +204,233 @@ body {
 
 .chat-area {
   flex-grow: 1;
-  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 20px;
   box-sizing: border-box;
   background-color: rgb(18, 18, 18);
+  gap: 10px;
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0;
+    padding: 0 0 10px 0;
+    height: 2rem;
+
+    .left-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .right-section {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      height: 100%;
+    }
+
+    .search-icon, .menu-icon {
+      cursor: pointer;
+      color: rgba($main-foreground, .6);
+      padding: 0 10px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform .3s ease;
+      &:hover {
+        color: rgba($main-foreground, 1);
+        transform: scale(1.2);
+        transition: transform .3s ease;
+      }
+    }
+
+    .avatar {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  .chat-messages {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    overflow-y: scroll;
+    padding: 0 10px;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #3f3f46;
+      border-radius: 3px;
+      border: 1px solid transparent;
+      background-clip: padding-box;
+      visibility: hidden;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+      transition: background-color 0.3s ease;
+    }
+
+    .message {
+      display: flex;
+      max-width: min(60rem, 80%);
+
+      &.sent {
+        align-self: flex-end;
+        justify-content: flex-end;
+
+        .bubble {
+          background-color: $main-accent-background;
+          color: $main-foreground;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      &.received {
+        align-self: flex-start;
+        justify-content: flex-start;
+
+        .bubble {
+          background-color: #2e2e2e;
+          color: #fff;
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      .bubble {
+        position: relative;
+        padding: 10px 14px;
+        border-radius: 1rem;
+        max-width: 100%;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s ease;
+      }
+
+      .metadata {
+        display: block;
+        margin-top: 4px;
+        font-size: 0.7rem;
+        opacity: 0.6;
+        text-align: right;
+      }
+    }
+  }
+
+  .chat-input-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: center;
+
+    .chat-attachments-input {
+      opacity: .3;
+      width: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      height: 100%;
+      position: relative;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+
+      svg {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="32" viewBox="0 0 448 512"><path fill="%23ffffff" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32v144H48c-17.7 0-32 14.3-32 32s14.3 32 32 32h144v144c0 17.7 14.3 32 32 32s32-14.3 32-32V288h144c17.7 0 32-14.3 32-32s-14.3-32-32-32H256z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0;
+        transform: rotateZ(-180deg) scale(0);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      &:hover {
+        opacity: .8;
+
+        svg {
+          opacity: 0;
+          transform: rotateZ(180deg) scale(0);
+        }
+
+        &::before {
+          opacity: 1;
+          transform: rotateZ(0) scale(1);
+        }
+      }
+    }
+
+    .message-input {
+      flex-grow: 1;
+      height: 40px;
+
+      input {
+        @include input;
+        height: 100%;
+        padding: 10px;
+      }
+    }
+
+    @keyframes pulsate-arrow {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(3px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slide-right {
+      0% {
+        transform: translateX(0) scale(1);
+      }
+      100% {
+        transform: translateX(50px) scale(1);
+      }
+    }
+
+    button {
+      @include button;
+    }
+  }
 }

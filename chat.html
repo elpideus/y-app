@@ -8,7 +8,7 @@
 </head>
 <body>
 <aside class="sidebar">
-    <h2>Y-App Chats</h2>
+    <h2>Yaps</h2>
     <div class="search-container">
         <input id="chatsSearch" type="text" aria-label="🔎 Search or start a yap!" name="chatsSearch" placeholder="🔎 Search or start a yap!" required>
     </div>
@@ -21,13 +21,122 @@
             </div>
         </div>
     </section>
-    <!-- Resizer handle -->
     <div class="resizer">
         <div class="resizer-line"></div>
     </div>
 </aside>
 <main class="chat-area">
-
+    <div class="chat-header">
+        <div class="left-section">
+            <div class="avatar" style="background-image: url('https://i.pravatar.cc/69?u=2')"></div>
+            <h3>John Lemon</h3>
+        </div>
+        <div class="right-section">
+            <div class="search-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512">
+                <path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208M208 352a144 144 0 1 0 0-288a144 144 0 1 0 0 288"/>
+            </svg>
+            </div>
+            <div class="menu-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="30" viewBox="0 0 128 512">
+                <path fill="currentColor" d="M64 360a56 56 0 1 0 0 112a56 56 0 1 0 0-112m0-160a56 56 0 1 0 0 112a56 56 0 1 0 0-112m56-104A56 56 0 1 0 8 96a56 56 0 1 0 112 0"/>
+            </svg>
+            </div>
+        </div>
+    </div>
+    <div class="chat-messages">
+        <div class="message sent">
+            <div class="bubble">
+                Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis.
+                <span class="metadata">10:49 AM</span>
+            </div>
+        </div>
+        <div class="message received">
+            <div class="bubble">
+                Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem.
+                <span class="metadata">10:49 AM</span>
+            </div>
+        </div>
+        <div class="message sent">
+            <div class="bubble">
+                Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis.
+                <span class="metadata">10:48 AM</span>
+            </div>
+        </div>
+        <div class="message received">
+            <div class="bubble">
+                Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit.
+                <span class="metadata">10:48 AM</span>
+            </div>
+        </div>
+        <div class="message sent">
+            <div class="bubble">
+                Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet.
+                <span class="metadata">10:47 AM</span>
+            </div>
+        </div>
+        <div class="message received">
+            <div class="bubble">
+                Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus.
+                <span class="metadata">10:47 AM</span>
+            </div>
+        </div>
+        <div class="message received">
+            <div class="bubble">
+                Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus.
+                <span class="metadata">10:47 AM</span>
+            </div>
+        </div>
+        <div class="message sent">
+            <div class="bubble">
+                Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
+                <span class="metadata">10:46 AM</span>
+            </div>
+        </div>
+        <div class="message received">
+            <div class="bubble">
+                In consectetur, felis nec dignissim lacinia, nisi lorem fringilla nisi, nec lacinia tortor mauris non erat. Integer nec odio.
+                <span class="metadata">10:46 AM</span>
+            </div>
+        </div>
+        <div class="message sent">
+            <div class="bubble">
+                Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
+                <span class="metadata">10:45 AM</span>
+            </div>
+        </div>
+        <div class="message received">
+            <div class="bubble">
+                Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
+                <span class="metadata">10:45 AM</span>
+            </div>
+        </div>
+        <div class="message sent">
+            <div class="bubble">
+                Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
+                <span class="metadata">10:44 AM</span>
+            </div>
+        </div>
+        <div class="message received">
+            <div class="bubble">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
+                <span class="metadata">10:44 AM</span>
+            </div>
+        </div>
+    </div>
+    <form class="chat-input-container">
+        <div class="chat-attachments-input">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="32" viewBox="0 0 448 512"><!-- Icon from Font Awesome 5 Solid by Dave Gandy - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M43.246 466.142c-58.43-60.289-57.341-157.511 1.386-217.581L254.392 34c44.316-45.332 116.351-45.336 160.671 0c43.89 44.894 43.943 117.329 0 162.276L232.214 383.128c-29.855 30.537-78.633 30.111-107.982-.998c-28.275-29.97-27.368-77.473 1.452-106.953l143.743-146.835c6.182-6.314 16.312-6.422 22.626-.241l22.861 22.379c6.315 6.182 6.422 16.312.241 22.626L171.427 319.927c-4.932 5.045-5.236 13.428-.648 18.292c4.372 4.634 11.245 4.711 15.688.165l182.849-186.851c19.613-20.062 19.613-52.725-.011-72.798c-19.189-19.627-49.957-19.637-69.154 0L90.39 293.295c-34.763 35.56-35.299 93.12-1.191 128.313c34.01 35.093 88.985 35.137 123.058.286l172.06-175.999c6.177-6.319 16.307-6.433 22.626-.256l22.877 22.364c6.319 6.177 6.434 16.307.256 22.626l-172.06 175.998c-59.576 60.938-155.943 60.216-214.77-.485"/></svg>
+        </div>
+        <div class="message-input">
+            <input type="text" placeholder="Start yapping...">
+        </div>
+        <button type="submit" disabled>
+            <span class="btn-text">Send</span>
+            <span class="btn-spinner" style="display: none;"><div class="mini-spinner"></div></span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h306.7L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+        </button>
+    </form>
 </main>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -58,11 +167,31 @@
         const sidebar = document.querySelector('.sidebar');
         const resizer = document.querySelector('.resizer');
         const resizerLine = document.querySelector('.resizer-line');
+        const chatArea = document.querySelector('.chat-area');
 
         let isResizing = false;
 
         const RESIZE_ERROR_MARGIN = 10;
         const MAX_SIDEBAR_WIDTH = 700;
+        const SIDEBAR_WIDTH_KEY = 'sidebarWidth';
+
+        /**
+         * Applies the given width to the sidebar and calculates the chat area width.
+         * Saves the width to localStorage.
+         * @param {number} newSidebarWidth The new width for the sidebar in pixels.
+         */
+        function applyWidths(newSidebarWidth) {
+            sidebar.style.width = `${newSidebarWidth}px`;
+            const totalWidth = document.body.clientWidth;
+            const chatAreaWidth = totalWidth - newSidebarWidth;
+            chatArea.style.width = `${chatAreaWidth}px`;
+            localStorage.setItem(SIDEBAR_WIDTH_KEY, newSidebarWidth);
+        }
+
+        const savedWidth = localStorage.getItem(SIDEBAR_WIDTH_KEY);
+        if (savedWidth) {
+            applyWidths(parseFloat(savedWidth));
+        }
 
         function updateResizerLinePosition(e) {
             const resizerRect = resizer.getBoundingClientRect();
@@ -85,9 +214,7 @@
         });
 
         resizer.addEventListener('mousemove', (e) => {
-            if (!isResizing) {
-                updateResizerLinePosition(e);
-            }
+            if (!isResizing) updateResizerLinePosition(e);
         });
 
         resizer.addEventListener('mouseleave', () => {
@@ -114,16 +241,12 @@
 
             let newWidth = e.clientX + RESIZE_ERROR_MARGIN;
 
-            if (newWidth > MAX_SIDEBAR_WIDTH) {
-                newWidth = MAX_SIDEBAR_WIDTH;
-            }
+            if (newWidth > MAX_SIDEBAR_WIDTH) newWidth = MAX_SIDEBAR_WIDTH;
 
             const minWidth = parseFloat(getComputedStyle(sidebar).minWidth);
-            if (newWidth < minWidth) {
-                newWidth = minWidth;
-            }
+            if (newWidth < minWidth) newWidth = minWidth;
 
-            sidebar.style.width = `${newWidth}px`;
+            applyWidths(newWidth);
         });
 
         document.addEventListener('mouseup', () => {
@@ -137,6 +260,14 @@
                 resizerLine.style.transform = 'translate(-50%, -50%)';
                 resizerLine.style.opacity = '0';
             }
+        });
+
+        const messageInput = document.querySelector('.message-input input');
+        const sendButton = document.querySelector('.chat-input-container button');
+
+        messageInput.addEventListener('input', function() {
+            if (this.value.trim() !== '') sendButton.removeAttribute('disabled');
+            else sendButton.setAttribute('disabled', 'disabled');
         });
     });
 </script>

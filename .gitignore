@@ -5,6 +5,12 @@
 phpmyadmin
 api/config.php
 
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml

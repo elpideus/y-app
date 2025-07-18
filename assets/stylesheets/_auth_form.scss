@@ -36,43 +36,8 @@
   }
 
   button {
-    box-sizing: border-box;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background-color: $main-accent-background;
-    color: $main-foreground;
-    font-size: 1.2rem;
-    cursor: pointer;
+    @include button;
     margin: 0 0 20px 0;
-    overflow-x: hidden;
-
-    .mini-spinner {
-      width: 1.2rem;
-      height: 1.2rem;
-      border: 3px solid $secondary-background;
-      border-top: 3px solid $main-accent-foreground;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-left: 0.5rem;
-    }
-
-    .btn-spinner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      filter: grayscale(1);
-      opacity: 0.5;
-
-      span, svg {
-        transform: none !important;
-        transition: none !important;
-      }
-    }
 
     span {
       display: inline-block;
