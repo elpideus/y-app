@@ -12,3 +12,21 @@
 @mixin spinner-animation {
   animation: spin 1s linear infinite;
 }
+
+@mixin input {
+  color: $main-foreground;
+  @include full-width;
+  text-decoration: none;
+  outline: none;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  background-color: $secondary-background;
+  border: 1px solid transparent;
+  font-size: 1.2rem;
+
+  &:focus,
+  &:active {
+    border: 1px solid rgba($main-foreground, .3);
+    outline: none;
+  }
+}

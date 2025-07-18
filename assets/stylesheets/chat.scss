@@ -1,0 +1,79 @@
+@import "fonts";
+@import 'variables';
+@import 'mixins';
+@import "base";
+
+body {
+  justify-content: normal;
+  align-items: normal;
+}
+
+.sidebar {
+  padding: 0 20px;
+  box-sizing: border-box;
+  max-width: 60rem;
+  width: 20vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  h2 {
+    margin-left: 20px;
+  }
+
+  #chatsSearch {
+    @include input;
+    font-size: 1rem;
+    padding: 0.4rem;
+    margin: -20px 20px 0 20px;
+    &::placeholder {
+      filter: saturate(0);
+    }
+  }
+
+  .active-chats-list {
+    .active-chat {
+      $height: 69px;
+      display: flex;
+      gap: 10px;
+      height: $height;
+      overflow: hidden;
+      white-space: nowrap;
+
+      .avatar {
+        width: $height;
+        height: $height;
+        border-radius: 50%;
+        flex-grow: 0;
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+
+      .details {
+        cursor: pointer;
+        @include full-width;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0;
+        min-width: 0;
+        overflow: hidden;
+
+        h4 {
+          margin: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        span {
+          margin: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}

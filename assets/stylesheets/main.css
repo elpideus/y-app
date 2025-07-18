@@ -63,13 +63,13 @@ body {
   width: 100%;
   box-sizing: border-box;
   text-decoration: none;
-  padding: 0.75rem;
   outline: none;
   margin-bottom: 1rem;
   border-radius: 6px;
   background-color: rgb(42, 42, 42);
   border: 1px solid transparent;
   font-size: 1.2rem;
+  padding: 0.75rem;
 }
 .auth-container input:focus, .auth-container input:active {
   border: 1px solid rgba(223, 223, 223, 0.3);
@@ -128,9 +128,6 @@ body {
   width: 100%;
   box-sizing: border-box;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  gap: 0.2rem;
 }
 .auth-container .auth-link a {
   cursor: pointer;
